@@ -1,4 +1,21 @@
 {
   "subtitle": "Over 36,500+ Active Listings",
-  "title": "Find Nearby Places & Things"
+  "title": "Find Nearby Places & Things",
+  "domy": [
+    {
+      "nazov": "Moderny dom pri jazere",
+      "obrazok": "assets/images/listing-01.jpg",
+      "url": "listing.php"
+    },
+    {
+      "nazov": "Rodinny dom v centre",
+      "obrazok": "assets/images/listing-02.jpg",
+      "url": "category.php"
+    },
+    {
+      "nazov": "Vila s bazenom",
+      "obrazok": "assets/images/listing-03.jpg",
+      "url": "contact.php"
+    }
+  ]
 }

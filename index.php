@@ -1,5 +1,8 @@
 <?php
-$banner = json_decode(file_get_contents('banner.json'), true);
+require_once 'functions.php';
+
+$banner = loadJsonData('banner.json');
+$activePage = 'home';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +20,7 @@ $banner = json_decode(file_get_contents('banner.json'), true);
 <body>
 
   <!-- Header -->
-  <?php include 'header.html'; ?>
+  <?php include 'nav.php'; ?>
 
   <!-- Main Banner -->
   <div class="main-banner">
@@ -32,6 +35,8 @@ $banner = json_decode(file_get_contents('banner.json'), true);
       </div>
     </div>
   </div>
+
+  <?php renderDomy($banner['domy'] ?? []); ?>
 
   <!-- Footer -->
   <?php include 'footer.html'; ?>

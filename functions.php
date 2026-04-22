@@ -21,6 +21,7 @@ function renderNavigation(string $activePage = 'home'): void
         'home' => ['label' => 'Home', 'url' => 'index.php'],
         'category' => ['label' => 'Category', 'url' => 'category.php'],
         'listing' => ['label' => 'Listing', 'url' => 'listing.php'],
+        'qna' => ['label' => 'QnA', 'url' => 'qna.php'],
         'contact' => ['label' => 'Contact Us', 'url' => 'contact.php'],
     ];
 

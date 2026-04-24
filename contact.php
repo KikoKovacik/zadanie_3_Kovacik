@@ -33,7 +33,14 @@ https://templatemo.com/tm-564-plot-listing
 <body>
   <?php
   require_once 'functions.php';
+  require_once 'Database.php';
+  require_once 'ContactService.php';
+
+  use App\Services\Contact;
+
   $activePage = 'contact';
+  $contactService = new Contact();
+  $interestOptions = $contactService->getInterestOptions();
   ?>
 
   <!-- ***** Preloader Start ***** -->
@@ -97,11 +104,12 @@ https://templatemo.com/tm-564-plot-listing
                     </div>
                     <div class="col-lg-12">
                       <ul>
-                        <li><input type="checkbox" name="option1" value="cars"><span>Cars</span></li>
-                        <li><input type="checkbox" name="option2" value="aparmtents"><span>Apartments</span></li>
-                        <li><input type="checkbox" name="option3" value="shopping"><span>Shopping</span></li>
-                        <li><input type="checkbox" name="option4" value="food"><span>Food &amp; Life</span></li>
-                        <li><input type="checkbox" name="option5" value="traveling"><span>Traveling</span></li>
+                        <?php foreach ($interestOptions as $option): ?>
+                          <li>
+                            <input type="checkbox" name="<?php echo htmlspecialchars($option['name']); ?>" value="<?php echo htmlspecialchars($option['value']); ?>">
+                            <span><?php echo htmlspecialchars($option['label']); ?></span>
+                          </li>
+                        <?php endforeach; ?>
                       </ul>
                     </div>
                     <div class="col-lg-12">

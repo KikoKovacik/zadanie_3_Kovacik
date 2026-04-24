@@ -1,9 +1,12 @@
 <?php
 require_once 'functions.php';
+require_once 'Database.php';
 require_once 'QnAService.php';
 
+use App\Services\QnA;
+
 $activePage = 'qna';
-$qnaService = new QnA('qna.json');
+$qnaService = new QnA();
 $qnaItems = $qnaService->getAllQuestionsAndAnswers();
 ?>
 <!DOCTYPE html>

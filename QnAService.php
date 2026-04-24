@@ -1,12 +1,17 @@
 <?php
 
-class QnA
-{
-    private string $dataFile;
+namespace App\Services;
 
-    public function __construct(string $dataFile = 'qna.json')
+use App\Core\Database;
+
+class QnA extends Database
+{
+    private string $dataConfigKey;
+
+    public function __construct(string $dataConfigKey = 'qna_data_file')
     {
-        $this->dataFile = $dataFile;
+        parent::__construct();
+        $this->dataConfigKey = $dataConfigKey;
     }
 
     /**
@@ -16,19 +21,7 @@ class QnA
      */
     public function getAllQuestionsAndAnswers(): array
     {
-        if (!file_exists($this->dataFile)) {
-            return [];
-        }
-
-        $content = file_get_contents($this->dataFile);
-        if ($content === false) {
-            return [];
-        }
-
-        $decoded = json_decode($content, true);
-        if (!is_array($decoded)) {
-            return [];
-        }
+        $decoded = $this->getJsonData($this->dataConfigKey);
 
         $result = [];
         foreach ($decoded as $item) {

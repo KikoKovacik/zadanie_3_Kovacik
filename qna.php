@@ -2,12 +2,21 @@
 require_once 'functions.php';
 require_once 'Database.php';
 require_once 'QnAService.php';
+// Explicitly load the DB config so Database can access it via require()
+require_once __DIR__ . '/db/config.php';
 
 use App\Services\QnA;
 
 $activePage = 'qna';
-$qnaService = new QnA();
-$qnaItems = $qnaService->getAllQuestionsAndAnswers();
+// Instantiate service with basic error detection
+try {
+    $qnaService = new QnA();
+    $qnaItems = $qnaService->getAllQuestionsAndAnswers();
+} catch (Throwable $e) {
+    // Log and fallback to empty list for display
+    error_log('QnA init error: ' . $e->getMessage());
+    $qnaItems = [];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
